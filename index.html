@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Quiz Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="quiz-card">
+            <!-- Header -->
+            <div class="quiz-header">
+                <h1>QuizMaster Pro</h1>
+                <p>Test Your Knowledge with Style</p>
+            </div>
+
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <h2>Choose Your Challenge</h2>
+                <p>Select a category to begin your quiz journey</p>
+                
+                <div class="category-grid">
+                    <div class="category-card" onclick="startQuiz('general')">
+                        <i class="fa-solid fa-earth-americas"></i>
+                        <h3>General Knowledge</h3>
+                        <p>10 Questions</p>
+                    </div>
+                    <div class="category-card" onclick="startQuiz('science')">
+                        <i class="fa-solid fa-microscope"></i>
+                        <h3>Science & Tech</h3>
+                        <p>10 Questions</p>
+                    </div>
+                    <div class="category-card" onclick="startQuiz('history')">
+                        <i class="fa-solid fa-book-atlas"></i>
+                        <h3>History</h3>
+                        <p>10 Questions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div class="quiz-screen" id="quizScreen">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+                        <div class="timer" id="timer">
+                            <span class="timer-icon fa-solid fa-alarm-clock"></span>
+                            <span id="timeLeft">30s</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <!-- Question -->
+                <div class="question-container" id="questionContainer">
+                    <span class="question-number">Question <span id="qNum">1</span></span>
+                    <div class="question-text" id="questionText"></div>
+                </div>
+
+                <!-- Options -->
+                <div class="options-container" id="optionsContainer"></div>
+
+                <!-- Actions -->
+                <div class="quiz-actions">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">
+                        <span>← Previous</span>
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                        <span id="nextBtnText">Next →</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-screen" id="resultsScreen">
+                <div class="score-circle">
+                    <svg width="200" height="200">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="background" cx="100" cy="100" r="90"></circle>
+                        <circle class="progress" cx="100" cy="100" r="90" id="scoreCircle"></circle>
+                    </svg>
+                    <div class="score-text" id="scorePercentage">0%</div>
+                </div>
+
+                <h2 class="results-title" id="resultsTitle">Congratulations!</h2>
+                <p class="results-message" id="resultsMessage"></p>
+
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <span class="stat-value" id="correctAnswers">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="wrongAnswers">0</span>
+                        <span class="stat-label">Wrong</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="totalTime">0s</span>
+                        <span class="stat-label">Time Taken</span>
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn btn-secondary" onclick="goHome()">
+                        <span>← Back to Home</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="restartQuiz()">
+                        <span>Try Again <i class="fa-solid fa-bezier-curve"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
