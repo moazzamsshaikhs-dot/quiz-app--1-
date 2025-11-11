@@ -514,7 +514,9 @@ body {
     pointer-events: none;
     opacity: 0.6;
 }
-
+.category-card .p{
+    color:#fff;
+}
 /* Buttons */
 .quiz-actions {
     display: flex;
